@@ -1,0 +1,38 @@
+A person is standing at the ground level (stair 0) and wants to reach the nth stair. 
+The person can climb 1 to m stairs in a single step. 
+Your task is to calculate how many distinct ways the person can reach exactly the nth stair.
+
+The person cannot go below stair 0. All steps must be forward only.
+
+Constraints:
+------------
+n must be greater 0(zero)
+
+Input Format:
+--------------
+Line-1: A single integer n, representing the Target stair.
+Line-2: A single integer n, representing the Max jump size.
+
+Output Format:
+---------------
+Line-1: A single integer representing the number of distinct ways to climb to the top.
+
+Sample Input-1: 
+----------------
+5
+4
+
+Sample Output-1: 
+----------------
+15
+
+
+Sample Input-2: 
+---------------
+3
+3
+
+Sample Output-2: 
+----------------
+4
+

@@ -1,0 +1,23 @@
+Last class recursion
+
+recursion easy to understand but hard to comprehend
+for bettering the developing time
+
+breakes down into smaller pieces
+
+reduce time complexity by reducing the number of time recursion is called
+
+factorial, fibanocii examples
+
+fibanocii using recursion results in o(2^n) and simple for loop o(n). To reduce o(2^n) we use Dynamic Programming - Memorization and Tabulation
+
+Visualizing Recursion in the form of a tree with subtrees being called again and again
+
+4 steps and climb 1/2
+
+4 --> (1,4) , (2,4)
+(1,4) --> (2,4) , (3,4)
+(2,4) --> (3,4) , (4,4)
+(3,4) --> (4,4)
+
+literally same code as that of fibanocii recursion
