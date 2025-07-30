@@ -1,0 +1,4 @@
+Stobogrammatic Number --> which when rotated by 180 degree is same,
+eg: 69,8,11,1,818
+
+Also that previous day Non Overlapping SubStrning
