@@ -1,0 +1,58 @@
+NOTE: USE BINARY SEARCH APPROACH
+
+
+In a small village, there are N water containers arranged in a row. 
+Each container has a different amount of water. 
+The villagers want to redistribute water so that all containers contain the same amount of water.
+
+However, due to leakage during pouring, P% of the water leaks out whenever water is transferred from one container to another.
+That means, if M liters of water are poured, only (100-P)% of M actually reaches the other container.
+
+Your task is to determine the maximum possible amount of water that can be made equal across all containers after redistribution.
+
+NOTE: Print the result with a precision of 5 decimal places. Answers within 10^(-5) of the actual result will be accepted.
+
+Input Format:
+-------------
+Line-1: Two space-separated integers, N and P
+Line-2: N space-separated integers, containers[]
+
+Output Format:
+---------------
+Line-1: Print a double value rounded to 5 decimals – the maximum equal liters of water possible in each container.
+
+Constraints
+------------
+1 ≤ N ≤ 1000
+0 ≤ containers[i] ≤ 10^9
+0 ≤ P < 100
+
+Sample Input-1:
+---------------
+4 75
+2 8 3 12
+
+Sample Output-1:
+----------------
+4.00000
+
+
+Explanation:
+------------
+Initial amounts: {2, 8, 3, 12}
+Pouring water while losing 75% each 2time, redistribution finally balances all containers to 4 liters.
+
+Sample Input-2:
+---------------
+4 50
+3 5 8 10
+
+Sample Output-2:
+----------------
+5.66666
+
+
+Explanation:
+------------
+Total water = 26 liters, but with 50% loss during redistribution, not all water can be balanced.
+After redistribution, the maximum equal level achievable is ≈ 5.66666 liters per container.

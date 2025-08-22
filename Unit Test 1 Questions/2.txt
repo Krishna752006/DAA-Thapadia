@@ -1,0 +1,89 @@
+NOTE: USE DIVIDE AND CONQUER APPROACH
+
+A linguistics lab is analyzing a string of characters recorded from a mixed-case sensor.
+They define a harmonious segment as a contiguous substring where for every 
+alphabetic character that appears, both its lowercase and uppercase forms also 
+appear within that same substring.
+
+Your task is to find the longest harmonious segment of the given string.
+
+If there are multiple with the same maximum length, return the one that starts 
+earliest in the string.
+
+If no harmonious segment exists, return an empty string.
+
+Notes:
+------
+Only letters are relevant to the harmony check (a–z/A–Z); 
+other characters (digits, punctuation, spaces) may be present but do not affect 
+the requirement except by occupying positions in the substring.
+
+The substring must be contiguous.
+
+Input Format:
+--------------
+Line-1: A string s (may contain letters, digits, punctuation, spaces).
+
+Output Format:
+---------------
+Line-1: The longest harmonious substring (possibly empty).
+
+Constraints:
+-------------
+1 ≤ |s| ≤ 100
+s consists of printable ASCII characters
+
+A harmonious substring requires: for every letter c in the substring, both c and 
+its opposite case appear in the substring (e.g., if a is present, A must also be present)
+
+Sample Input-1:
+---------------
+YazaAay
+
+Sample Output-1:
+----------------
+aAa
+
+
+Explanation:
+------------
+Valid harmonious substrings include "aAa" and "azaA". 
+The longest is "aAa" (length 3). "azaA" (length 4) is not harmonious because z 
+appears without Z.
+
+Sample Input-2:
+---------------
+Bb
+
+Sample Output-2:
+----------------
+Bb
+
+
+Explanation:
+------------
+B and b both appear in the substring "Bb".
+
+Sample Input-3:
+---------------
+c
+
+Sample Output-3:
+----------------
+"" //empty string
+
+Explanation:
+------------
+Single-character substrings cannot be harmonious since both cases are required.
+
+Sample Input-4:
+---------------
+abCDxy
+
+Sample Output-4:
+----------------
+"" //empty string
+
+Explanation:
+------------
+No contiguous substring contains both cases of all letters present within it.

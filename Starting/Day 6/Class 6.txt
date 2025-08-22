@@ -1,0 +1,3 @@
+Master Theorem and Suthi Comtinuing on DIvide & Conqure
+
+Quick Sort Worst Case O(n^2)
