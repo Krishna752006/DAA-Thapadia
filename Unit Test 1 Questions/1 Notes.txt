@@ -1,0 +1,107 @@
+Updated notes — includes the reasoning for the **100-iteration upper bound**.
+
+---
+
+## Problem
+
+Redistribute `N` containers’ water so all contain the same amount.
+Each transfer loses `P%` of water.
+Find the **maximum equal level** achievable after redistribution.
+
+---
+
+## Core Insight
+
+Simulating transfers is inefficient due to leakage.
+Instead, binary search the **final equal level**.
+
+The target water level is **monotonic**:
+If a level `x` is achievable, any level `< x` is also achievable.
+⇒ Use **binary search on the answer**.
+
+---
+
+## Feasibility Check (for candidate `mid`)
+
+1. **give** = total water above `mid`
+   [
+   \text{give} = \sum_{a_i > mid}(a_i - mid)
+   ]
+
+2. **receive** = total water below `mid`
+   [
+   \text{receive} = \sum_{a_i < mid}(mid - a_i)
+   ]
+
+3. **Leakage loss:**
+   Only `give * (1 - P/100)` reaches other containers.
+
+4. **Feasible condition:**
+   [
+   give \times (1 - P/100) \ge receive
+   ]
+
+---
+
+## Binary Search Steps
+
+1. Initialize:
+
+   ```
+   low = 0
+   high = max(containers)
+   ```
+2. Repeat **100 times**:
+
+   * `mid = (low + high) / 2`
+   * If feasible → `low = mid`
+   * Else → `high = mid`
+3. Print `low` with 5-decimal precision.
+
+---
+
+## Why “100 Iterations”
+
+Each binary search step halves the range.
+After `k` steps, precision ≈ `(max_value - 0) / 2^k`.
+
+Worst case:
+
+* `max_value = 10^9` (per constraints)
+* Required precision = `10^-5`
+
+[
+\frac{10^9}{2^k} \le 10^{-5} \implies 2^k \ge 10^{14}
+]
+
+`k ≈ 47`.
+Using **100 iterations** ensures convergence well within `1e−5` tolerance.
+It’s constant time and cheap (N ≤ 1000).
+
+---
+
+## Complexity
+
+| Metric | Value      |
+| ------ | ---------- |
+| Time   | O(N * 100) |
+| Space  | O(1)       |
+
+---
+
+## Common Errors
+
+| Error                          | Fix                              |
+| ------------------------------ | -------------------------------- |
+| Checking `r * lossFactor >= g` | Should be `g * lossFactor >= r`  |
+| Not casting `P` to double      | Use `P / 100.0`                  |
+| Too few iterations             | Use 100 for guaranteed precision |
+
+---
+
+## Takeaways
+
+* Problem type: **Parametric Search (Binary Search on Real Values)**
+* Precision control is critical.
+* Conceptual difficulty: **Medium–Hard** (binary search insight is key).
+* Implementation difficulty: **Easy** once logic is known.

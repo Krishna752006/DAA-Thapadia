@@ -1,0 +1,51 @@
+Concise notes on the **Divide and Conquer approach** for *Longest Harmonious Substring*:
+
+---
+
+### Concept
+
+A *harmonious substring* requires that every alphabetic character present has both uppercase and lowercase forms inside it.
+
+---
+
+### Approach: Divide and Conquer
+
+| Step                       | Description                                                                                       |
+| -------------------------- | ------------------------------------------------------------------------------------------------- |
+| **1. Identify base case**  | If the substring length ≤ 1 → return empty (cannot be harmonious).                                |
+| **2. Analyze substring**   | Create two sets: lowercase letters and uppercase letters (normalized to lowercase).               |
+| **3. Find bad characters** | `bad = (lowercase_set XOR uppercase_set)` → characters appearing in only one case.                |
+| **4. Divide**              | Split the string at positions containing bad characters. Each segment forms a smaller subproblem. |
+| **5. Conquer**             | Recursively call the algorithm on each segment.                                                   |
+| **6. Combine**             | Select the longest harmonious substring returned by recursive calls (earliest if tied).           |
+
+---
+
+### Example
+
+`s = "YazaAay"`
+
+* Lower = {y, a, z}
+* Upper = {y, a}
+* Bad = {z}
+  → Divide into: `"Ya"` and `"aAay"`
+* `"Ya"` not harmonious
+* `"aAay"` contains `"aAa"` → valid
+  **Result:** `"aAa"`
+
+---
+
+### Characteristics
+
+| Aspect                    | Detail                                                                          |
+| ------------------------- | ------------------------------------------------------------------------------- |
+| **Algorithm type**        | Divide and Conquer                                                              |
+| **Recursion termination** | When no bad characters remain (harmonious) or substring length ≤ 1              |
+| **Combination rule**      | Return the longest valid substring from all recursive results                   |
+| **Time Complexity**       | O(n²) worst case                                                                |
+| **Space Complexity**      | O(n) recursion depth                                                            |
+| **Key insight**           | Non-harmonious letters *partition* the string into smaller, independent regions |
+
+---
+
+Would you like me to add a **diagram** summarizing the recursive splitting process for inclusion in your notes?
