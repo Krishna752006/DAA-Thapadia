@@ -1,0 +1,13 @@
+1.keypad problem where the input are the numbers and the output will be the combination of the the digits in a sequence 
+"42" -> ["ga","gb","gc","ha","hb","hc","ia","ib","ic"]
+
+2.minimum cost for travelling in a calender year problem where cost  of number of days pass is given. 1 day, week and month subscriptions.
+1 2 7 15
+2 10 15
+
+3.count the number of unsafe people in an 2d array of 1 and 0's where the boundary people and the people connected to them in their four direction are also safe
+
+1 0 1 0
+0 1 0 1
+0 1 1 0
+0 0 0 1 -> 3

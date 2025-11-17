@@ -1,0 +1,567 @@
+1. What is the recurrence relation for a typical divide and conquer algorithm that splits a problem of size n into two subproblems of size n/2 and combines in O(n)?
+
+a) T(n) = 2T(n/2) + O(n)
+b) T(n) = T(n/2) + O(n)
+c) T(n) = T(n-1) + O(1)
+d) T(n) = 2T(n-1) + O(1)
+
+Answer: a)
+Explanation: Both subproblems are solved and merging is linear.
+
+2.  What is the solution to T(n) = 2T(n/2) + n?
+
+a) O(n)
+b) O(n log n)
+c) O(n^2)
+d) O(log n)
+
+Answer: b)
+Explanation: Master theorem gives O(n log n).
+
+3. In the context of divide and conquer, what is a "base case"?
+
+a) A trivial instance solved directly without division
+b) The largest subproblem possible
+c) The merging step
+d) A recursive call to the original problem
+
+Answer: a)
+Explanation: The simplest, directly solvable case.
+
+4. Which property is critical for using divide and conquer for parallel processing?
+
+a) Subproblems are independent
+b) Subproblems are always sorted
+c) Each subproblem is smaller by a constant factor
+d) Recursion depth is O(1)
+
+Answer: a)
+Explanation: Independence allows for parallelism.
+
+5. The efficiency of divide and conquer often relies on:
+
+a) The cost of combining subproblems
+b) The number of base cases
+c) Avoiding recursion
+d) Using sorted data
+
+Answer: a)
+Explanation: If combining is costly, performance suffers.
+
+6. What is the worst-case time complexity of Quick Sort?
+
+a) O(n log n)
+b) O(n^2)
+c) O(n)
+d) O(log n)
+
+Answer: b)
+Explanation: Occurs when the pivot always picks the smallest/largest element.
+
+7. What is the average case time complexity of Quick Sort?
+
+a) O(n log n)
+b) O(n^2)
+c) O(n)
+d) O(log n)
+
+Answer: a)
+Explanation: On average, partitions are well balanced.
+
+8. Which of the following Quick Sort variants is not in-place?
+
+a) Lomuto partition scheme
+b) Hoare partition scheme
+c) Using additional arrays for partitions
+d) In-place 3-way partitioning
+
+Answer: c)
+Explanation: Extra arrays mean not in-place.
+
+9. What is the partitioning step's role in Quick Sort?
+
+a) Sorts the entire array
+b) Divides the array into elements less than and greater than the pivot
+c) Merges two arrays
+d) Always sorts half the array
+
+Answer: b)
+Explanation: Partition divides around the pivot.
+
+10. If Quick Sort is called with an already sorted array and always chooses the first element as pivot, its time complexity is:
+
+a) O(n)
+b) O(log n)
+c) O(n^2)
+d) O(n log n)
+
+Answer: c)
+Explanation: Highly unbalanced partitions in this case.
+
+11. Given array: [5, 2, 8, 3, 1, 6, 4]
+Using partition_low (first element as pivot) with low=0, high=6, what is the pivot value and its final position after the first partition?
+
+a) Pivot=5 at index 3
+b) Pivot=5 at index 4
+c) Pivot=5 at index 2
+d) Pivot=2 at index 0
+
+Answer: b)
+Explanation: Pivot 5, after swaps, ends at index 4.
+
+12. Using partition_low (first element as pivot), after the first partition in the above array ([5, 2, 8, 3, 1, 6, 4]), what is the resulting array?
+
+a) [1, 2, 4, 3, 5, 8, 6]
+b) [1, 2, 4, 3, 8, 6, 5]
+c) [2, 4, 3, 1, 5, 8, 6]
+d) [2, 3, 1, 4, 5, 8, 6]
+
+Answer: a)
+Explanation: Elements <= 5 to left, >5 to right.
+
+13.
+In the array [5, 2, 8, 3, 1, 6, 4], Using partition_low after partitioning the left subarray [1, 2, 4, 3] (low=0, high=3), what is the pivot and its index?
+
+a) Pivot=1 at index 0
+b) Pivot=2 at index 1
+c) Pivot=4 at index 2
+d) Pivot=3 at index 3
+
+Answer: a)
+Explanation: Pivot 1 is already the smallest.
+
+
+14. In the array [5, 2, 8, 3, 1, 6, 4], At what point does the value 2 become the pivot and stay in its final position?
+
+a) After the first partition
+b) After the second partition
+c) After the third partition
+d) At the last partition
+e) Never
+
+Answer: c)
+Explanation: 2 is the third pivot and ends up at index 1.
+
+15.
+If you perform partition_high (last element as pivot) on [24, 9, 29, 14, 19, 27] with low=0, high=5, what is the pivot and its final index?
+
+a) Pivot=27 at index 5
+b) Pivot=27 at index 4
+c) Pivot=27 at index 3
+d) Pivot=27 at index 2
+
+Answer: b)
+Explanation: Pivot 27, after partition, ends at index 4.
+
+16.With array [24, 9, 14, 19, 27, 29] and partition_low(arr, 0, 5), what is the final order after the second partition?
+
+a) [14, 9, 19, 24, 27, 29]
+b) [9, 14, 19, 24, 27, 29]
+c) [19, 9, 14, 24, 27, 29]
+d) [24, 9, 14, 19, 27, 29]
+
+Answer: a)
+Explanation: Pivot 24 moves to index 3, elements >24 to the right.
+
+17. What is the resulting pivot index after the third partition (left subarray) in the array [4, 2, 3, 1, 5, 6, 8] using partition_low?
+
+a) 0
+b) 1
+c) 2
+d) 3
+
+Answer: d)
+Explanation: Pivot 4 finally placed at index 3 after the third partition.
+
+
+18. What happens if all elements are equal when using partition_high?
+
+a) Pivot always ends at high
+b) All elements stay in place, no swaps needed
+c) Partition index is always low
+d) Recursion stops after one partition
+
+Answer: a)
+Explanation: Elements are never less than pivot, so pivot swaps with itself at high.
+
+19. What is the time complexity of Merge Sort in the worst case?
+
+a) O(n)
+b) O(log n)
+c) O(n log n)
+d) O(n^2)
+
+Answer: c)
+Explanation: Splitting and merging steps both add O(n log n).
+
+20. What is the space complexity of Merge Sort?
+
+a) O(1)
+b) O(log n)
+c) O(n)
+d) O(n^2)
+
+Answer: c)
+Explanation: Needs an auxiliary array for merging.
+
+21. Which part of Merge Sort is responsible for most of the time spent?
+
+a) Merging subarrays
+b) Dividing the array
+c) Comparing with pivot
+d) Picking the base case
+
+Answer: a)
+Explanation: The merge operation is O(n) per level.
+
+22. Merge Sort is particularly preferred over Quick Sort when:
+
+a) Memory is limited
+b) Stability is required
+c) Elements are all unique
+d) Input is small
+
+Answer: b)
+Explanation: Merge Sort is stable by default.
+
+23. Which is the minimum number of comparisons required to merge two sorted arrays of length n each?
+
+a) n
+b) 2n
+c) 2n-1
+d) 2n+1
+
+Answer: c)
+Explanation: In worst case, 2n-1 comparisons needed.
+
+24. The base case of Merge Sort is reached when:
+
+a) Array size is 1
+b) Array size is 2
+c) Array is sorted
+d) Array is empty
+
+Answer: a)
+Explanation: No further splitting needed for single element.
+
+25. For input [5, 2, 8, 3, 1, 6, 4], after merging [2, 5] and [3, 8] (merge low 0 middle 1 high 3), what is the array state?
+
+a) [2, 3, 5, 8, 1, 6, 4]
+b) [2, 5, 3, 8, 1, 6, 4]
+c) [2, 3, 8, 5, 1, 6, 4]
+d) [5, 2, 3, 8, 1, 6, 4]
+
+Answer: a)
+
+26. For input [5, 2, 8, 3, 1, 6, 4], during the merge of [1, 6] and [4] (merge low 4 middle 5 high 6), what is the state after placing the first two elements in the merged section?
+
+a) [2, 3, 5, 8, 1, 4, 4]
+b) [2, 3, 5, 8, 1, 4, 6]
+c) [2, 3, 5, 8, 4, 1, 6]
+d) [2, 3, 5, 8, 1, 6, 4]
+
+Answer: a)
+
+
+27. For input [5, 2, 8, 3, 1, 6, 4], at which merge step does the value 8 get placed in its correct, final position?
+
+a) During the final merge (merge low 0 middle 3 high 6)
+b) After the first merge
+c) During the merge of [8] and [3]
+d) It was always in the correct position
+
+Answer: a)
+
+28. What is the key property of the majority element in an array?
+
+a) Occurs more than n/2 times
+b) Occurs at least once
+c) Occurs exactly n/2 times
+d) Is the smallest element
+
+Answer: a)
+Explanation: Majority means more than half the size.
+
+29. Which divide and conquer approach is used to find the majority element in O(n log n) time?
+
+a) Split the array, find majority in each half, combine results
+b) Use a hash map to count occurrences
+c) Boyer-Moore Voting algorithm
+d) Linear search
+
+Answer: a)
+Explanation: Majority in subarrays is checked and combined.
+
+
+30. If both halves of an array return different candidates for majority, what should you do in combine step?
+
+a) Return either one
+b) Count occurrences of each and pick the true majority
+c) Return -1
+d) Merge both as majority
+
+Answer: b)
+Explanation: Both candidates must be verified in the full array.
+
+31. What is the recurrence relation for the divide and conquer majority element algorithm?
+
+a) T(n) = 2T(n/2) + O(n)
+b) T(n) = T(n-1) + O(1)
+c) T(n) = O(1)
+d) T(n) = T(n/2) + O(log n)
+
+Answer: a)
+Explanation: Two halves and linear combine.
+
+32. Which of the following can fail to find the majority element if it exists?
+
+a) Divide and conquer approach
+b) Sorting and picking middle element
+c) Randomized partition
+d) Linear search for max
+
+Answer: d)
+Explanation: Linear search for max may miss majority.
+
+33. What is the time complexity of the standard divide and conquer pow(x, n) function?
+
+a) O(1)
+b) O(n)
+c) O(log n)
+d) O(n log n)
+
+Answer: c)
+Explanation: Each call halves n.
+
+34. What is the base case for pow(x, n) using recursion?
+
+a) n == 0, return 1
+b) n == 1, return x
+c) x == 0, return 0
+d) x == 1, return 1
+
+Answer: a)
+Explanation: Anything to the power 0 is 1.
+
+35. Which optimization is essential for pow(x, n) to achieve O(log n) time?
+
+a) Only multiply by x when n is odd
+b) Always compute pow(x, n/2) only once and reuse
+c) Use iterative approach
+d) None of the above
+
+Answer: b)
+Explanation: Reusing pow(x, n/2) is critical.
+
+36. For pow(x, n), what is the result if x = 2 and n = 10 using the divide and conquer approach?
+
+a) 32
+b) 256
+c) 1024
+d) 512
+
+Answer: c)
+Explanation: 2^10 = 1024.
+
+37. What is the result of pow(5, -5) using the divide and conquer approach?
+
+a) -625
+b) -3125
+c) 1/3125
+d) 1/625
+e) 0
+
+Answer: c)
+
+Explanation:
+For negative exponents, pow(x, n) = 1 / pow(x, -n). So, pow(5, -5) = 1 / (5^5) = 1/3125.
+
+38.Evaluate pow(0.5, -4) using divide and conquer.
+
+a) 16
+b) 8
+c) 0.0625
+d) 4
+
+Answer: a)
+
+Explanation:
+pow(0.5, -4) = 1/pow(0.5,4)
+pow(0.5,4) = (0.5^2)^2 = (0.25)^2 = 0.0625
+So, result is 1/0.0625 = 16
+
+
+39. What is the value of pow(-2, -6) using the divide and conquer (exponentiation by squaring) approach?
+
+a) 1/64
+b) -1/64
+c) 1/32
+d) -1/32
+
+Answer: a)
+
+Explanation:
+pow(-2, -6) = 1 / pow(-2, 6)
+pow(-2, 6) = pow(-2, 3) * pow(-2, 3)
+pow(-2, 3) = -2 * pow(-2, 2) = -2 * [(-2) * (-2)] = -2 * 4 = -8
+So, pow(-2, 6) = (-8) * (-8) = 64
+Therefore, pow(-2, -6) = 1/64
+
+40. What is the value of pow(-3, 7)?
+
+a) 2187
+b) -2187
+c) 243
+d) -243
+
+Answer: b)
+Explanation:
+pow(-3,7) = (-3)^7 = -(3^7) = -2187
+
+
+41. What will this function print for mystery(2)?
+void mystery(int n) {
+    if (n == 0) return;
+    System.out.print(n + " ");
+    mystery(n-1);
+    System.out.print(n + " ");
+}
+
+a) 2 1 1 2
+b) 2 1 2 1
+c) 1 2 2 1
+d) 1 1 2 2
+
+Answer: a)
+Explanation: Pre- and post-recursive call print.
+
+42. What does the following function return for foo(3, 2)?
+int foo(int n, int k) {
+    if (n == 0) return 1;
+    return k * foo(n-1, k);
+}
+
+a) 6
+b) 8
+c) 9
+d) 12
+
+Answer: b)
+Explanation: Returns k^n = 2^3 = 8.
+
+43.
+Given:
+int funky(int n) {
+    if (n < 2) return n;
+    return funky(n-1) - funky(n-2);
+}
+What is the return value for funky(5)?
+
+a) 1
+b) 0
+c) -1
+d) 2
+
+Answer: c)
+Explanation: Trace:
+funky(5)=funky(4)-funky(3)
+funky(4)=funky(3)-funky(2)
+funky(3)=funky(2)-funky(1)
+funky(2)=funky(1)-funky(0)=1-0=1
+funky(3)=1-1=0
+funky(4)=0-1=-1
+funky(5)=-1-0=-1
+
+44. What will this function print for isHappy(7) (assume it prints "Happy" for happy number, "Unhappy" otherwise)?
+
+void isHappy(int n) {
+    Set<Integer> seen = new HashSet<>();
+    while (n != 1 && !seen.contains(n)) {
+        seen.add(n);
+        int sum = 0, temp = n;
+        while (temp > 0) {
+            int d = temp % 10;
+            sum += d*d;
+            temp /= 10;
+        }
+        n = sum;
+    }
+    if (n == 1) System.out.println("Happy");
+    else System.out.println("Unhappy");
+}
+
+a) Happy
+b) Unhappy
+c) 7
+d) Infinite loop
+
+Answer: a)
+Explanation: 7 is a happy number.
+
+45. If the function call stack depth in recursion for an input n is always O(log n), which kind of algorithm is it likely to be?
+
+a) Linear recursion
+b) Binary recursion
+c) Tail recursion
+d) Divide and conquer with halving
+
+Answer: d)
+
+46 You measure the run-time of an algorithm for n = 100, 200, 400 and observe times ~0.5s, ~2s, ~8s. Which is most likely its time complexity?
+
+a) O(n log n)
+b) O(n^2)
+c) O(n^3)
+d) O(2^n)
+
+Answer: c)
+Explanation: Each time n doubles, time increases ~8x: cubic growth.
+
+47. Which of the following is not a property of a valid algorithm?
+
+a) Finiteness
+b) Unambiguous steps
+c) Language dependence
+d) Input(s) and output(s) defined
+
+Answer: c)
+Explanation: Algorithms are logic, not tied to language.
+
+48. What is the output of the following function for input n = 2?
+
+// Generates all strobogrammatic numbers of length n
+List<String> findStrobogrammatic(int n);
+
+System.out.println(findStrobogrammatic(2));
+
+Assuming leading zeros are not allowed for n > 1.
+
+a) [11, 69, 88, 96]
+b) [00, 11, 69, 88, 96]
+c) [11, 88]
+d) [00, 11, 88]
+
+Answer: a)
+Explanation: "00" is not allowed as a two-digit number (leading zeros not allowed).
+
+49. If you are given a string s = "9869", is it strobogrammatic?
+
+a) Yes
+b) No
+
+Answer: b)
+Explanation: After rotation: 9→6, 8→8, 6→9, 9→6, so "9869" becomes "6986", which does not match the original.
+
+50. How many strobogrammatic numbers of length 3 are there (no leading zeros)?
+
+a) 3
+b) 4
+c) 5
+d) 6
+e) 12
+
+Answer: e)
+Explanation: The possible combinations (for n=3) are:
+[101, 111, 181, 609, 619, 689, 808, 818, 888, 906, 916, 986]
+However, only 12 of these have no leading zeros.
+
